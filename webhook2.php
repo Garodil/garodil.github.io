@@ -53,7 +53,7 @@ if($arr['message']["reply_to_message"] != null)
     if($boom[8] !=null) $tg_id = explode('|', $boom[8])[0]; else $tg_id = $boom[3];
     $sms = $arr['message']['text'];
     if($boom[8] != null) $reply_to = explode('|', $boom[8])[1]; else $reply_to = $boom[5];
-    $tg->reply($tg_id, $sms, $reply_to);
+    $tg->reply($tg_id, $sms, $reply_to, null, null);
 
     //$tg->reply($group_id, $boom, $reply_to);
   
@@ -63,8 +63,8 @@ if($arr['message']["reply_to_message"] != null)
 if ( isset( $data ) )
 {
     $tg->reply($group_id, 'Ответь на это сообщение, чтобы ответить на сообщение ' . $data['data'], $arr['message']['message_id'], $data, $threadId);
-  console.log("woah");
-  exit('ok');
+
+    exit('ok');
 }
  
 //Перевернём строку задом-наперёд используя функцию cir_strrev
@@ -89,4 +89,3 @@ $tg->forward($group_id, $tg_id, $arr['message']['message_id'], $threadId);
 $tg->send($group_id, $button, $sms_rev, $arr['message']['message_id'], $tg_id, $threadId);
 
 exit('ok'); //Обязательно возвращаем "ok", чтобы телеграмм не подумал, что запрос не дошёл
-?>

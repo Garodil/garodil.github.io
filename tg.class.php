@@ -7,15 +7,6 @@ class TG {
     public function __construct($token) {
         $this->token = $token; //Забиваем в переменную токен при конструкте класса
     }
-
-    public function topic($id)
-    {
-        
-        $out = $this->request('getForumTopics', array('channel' => getenv('group')));
-        foreach($out as $key => $value)
-            $why = $why. strval($value);
-        return $why;
-    }
     
     public function create($sender_name )
     {
@@ -57,7 +48,7 @@ class TG {
         return $out;
     }
 
-    public function reply($id, $message, $messageid, $callback = null, $threadid)
+    public function reply($id, $message, $messageid, $callback = null, $thread)
     {
         $data = array(
             'chat_id'      => $id,
@@ -88,4 +79,3 @@ class TG {
     }
 }
 
-?>
